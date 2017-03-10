@@ -1,0 +1,30 @@
+import React, {Component, PropTypes} from 'react';
+<% if (connect) %>import {connect} from 'react-redux';<% endif %>
+<% if (asyncConnect) %>import {asyncConnect} from 'redux-async-connect';<% endif %>
+
+<% if (asyncConnect) %>@asyncConnect([{
+  deferred: true,
+  promise: ({store: {dispatch, getState}}) => {
+    if (!isLoaded(getState())) {
+      return dispatch(loadData());
+    }
+  }
+}])<% endif %>
+<% if (connect) %>@connect(
+  state => ({}),
+  {},
+)<% endif %>
+export default class {{name}} extends Component {
+
+  static propTypes = {
+
+  }
+
+  render() {
+    const {} = this.props;
+    <% if (scss) %>const styles = require('./{{name}}.scss');<% endif %>
+    return (
+      <div></div>
+    );
+  }
+}

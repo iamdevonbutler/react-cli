@@ -1,0 +1,14 @@
+{
+  "name": "rruhe",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "rruhe": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jay Pescione <jpescione@gmail.com> (https://github.com/iamdevonbutler)",
+  "license": "MIT"
+}
