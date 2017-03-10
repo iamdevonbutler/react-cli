@@ -46,7 +46,7 @@ module.exports = class Parser {
         this.file = this.file.replace(match[0], match[2]);
       }
       else {
-        this.file = this.file.slice(0, match.index - 2) + this.file.slice(match.index);
+        this.file = this.file.slice(0, match.index - 1) + this.file.slice(match.index);
         this.file = this.file.replace(match[0], '');
       }
       this._parseConditionals();

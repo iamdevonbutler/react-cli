@@ -1,3 +1,5 @@
+const {EOL} = require('os');
+
 const self = module.exports;
 
 self.getOpts = (argv) => {
@@ -12,4 +14,8 @@ self.getOpts = (argv) => {
 
 self.capitalize = (string) => {
   return string[0].toUpperCase() + string.slice(1);
+};
+
+self.buildExportEntry = (name) => {
+  return `export ${self.capitalize(name)} from './${self.capitalize(name)}/${self.capitalize(name)}';${EOL}`;
 };

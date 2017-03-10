@@ -1,31 +1,28 @@
-const {capitalize} = require('../../utils');
 const component = require('./component');
-const fs = require('fs');
-const fse = require('fs-extra');
+// const reduxModule = require('./reduxModule');
 
 module.exports = (argv) => {
-  var dest, exists;
+
   const type = argv[1];
   const name = argv[2];
 
   if (!name) {
-    console.log(`"name" is required`);
+    console.log(`${type} "name" is required`);
     return;
   }
 
-  if (type !== 'container' || type != 'component') {
-    console.log(`You can not remove type "${type}"`);
-    return;
+  switch (type) {
+    case 'component':
+      component('component', name);
+      break;
+    case 'container':
+      component('container', name);
+      break;
+    // case 'reduxModule':
+      // reduxModule(argv);
+      // break;
+    default:
+      console.log(`What is a "${type}"?`);
   }
-
-  dest = `./src/${type}s/${name}`;
-  exists = fs.existsSync(dest);
-  if (!exists) {
-    console.log(`${capitalize(type)} "${name}" does not exist.`);
-    return;
-  }
-
-  fse.removeSync(dest);
-  console.log(`Removed ${type} "${name}"`);
 
 };
