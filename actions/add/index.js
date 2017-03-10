@@ -15,6 +15,8 @@ module.exports = (argv) => {
     case 'reduxModule':
       reduxModule(argv);
       break;
+    default:
+      console.log(`You can not add type "${type}"`);
   }
 
 };
