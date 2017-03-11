@@ -1,5 +1,5 @@
 const component = require('./component');
-const reduxModule = require('./reduxModule');
+const module2 = require('./module');
 const {capitalize, getOpts} = require('../../utils');
 
 module.exports = (argv) => {
@@ -20,9 +20,9 @@ module.exports = (argv) => {
     case 'container':
       component('container', name, options);
       break;
-    // case 'reduxModule':
-      // reduxModule(argv);
-      // break;
+    case 'module':
+      module2(name);
+      break;
     default:
       console.log(`What is a "${type}"?`);
   }

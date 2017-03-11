@@ -26,7 +26,7 @@ module.exports = (type, name, options) => {
     .trimNewLines()
     .getFile();
   fs.writeFileSync(dest, file);
-  console.log(`added ${name}.js`);
+  console.log(`added ${dest}`);
 
   // Add export entry to index.js
   dest = `./src/${type}s/index.js`;
@@ -36,7 +36,7 @@ module.exports = (type, name, options) => {
   if (options.scss) {
     dest = `./src/${type}s/${capitalize(name)}/${capitalize(name)}.scss`;
     fs.writeFileSync(dest, '');
-    console.log(`added ${name}.scss`);
+    console.log(`added ${dest}`);
   }
 
 }

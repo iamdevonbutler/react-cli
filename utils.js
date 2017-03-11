@@ -19,3 +19,7 @@ self.capitalize = (string) => {
 self.buildExportEntry = (name) => {
   return `export ${self.capitalize(name)} from './${self.capitalize(name)}/${self.capitalize(name)}';${EOL}`;
 };
+
+self.buildModuleEntry = (name) => {
+  return `import ${name} from './${name}';${EOL}`;
+};
