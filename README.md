@@ -27,7 +27,7 @@ Run commands - e.g. rr add component NAME -scss
 * remove page (rr remove page NAME)
 * rename component (rr rename component NAME)
 * rename page (rr rename page NAME)
-* add redux duck (rr add module NAME)
+* add redux duck (rr add duck NAME)
 
 
 ## React redux universal hot example usage (type === 'rruhe')
@@ -40,7 +40,7 @@ Run commands - e.g. rr add component NAME -scss
 * remove container (rr remove container NAME)
 * rename component (rr rename component NAME)
 * rename container (rr rename container NAME)
-* add redux duck (rr add module NAME)
+* add redux duck (rr add duck NAME)
 
 ### Options
 * -scss

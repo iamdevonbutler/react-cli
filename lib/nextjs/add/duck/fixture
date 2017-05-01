@@ -1,0 +1,45 @@
+import {fetch} from '../utils';
+
+const LOADING = '{{name}}/LOADING';
+const LOAD_SUCCESS = '{{name}}/LOAD_SUCCESS';
+const LOAD_FAIL = '{{name}}/LOAD_FAIL';
+
+const initialState = {
+  loading: false,
+  data: [],
+};
+
+export default function reducer(state = initialState, action = {}) {
+  switch (action.type) {
+    case LOADING:
+      return {
+        ...state,
+        loading: true,
+      };
+    case LOAD_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        data: action.data,
+      };
+    case LOAD_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    default:
+      return state;
+  }
+}
+
+export async function fetchDataOnce({{{name}}}, dispatch) {
+  if ({{name}} && {{name}}.data.length) {
+    return {{name}}.data;
+  }
+  return await fetchData(dispatch);
+}
+
+export async function fetchData(dispatch) {
+  return await fetch('/api/...', [LOADING, LOAD_SUCCESS, LOAD_FAIL], dispatch);
+}

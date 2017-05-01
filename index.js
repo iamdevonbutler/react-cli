@@ -33,5 +33,5 @@ switch (type) {
     nextjs(argv, config);
     break;
   default:
-    console.log('Wrong type guy.');
+    console.log('Wrong type guy. Either "rruhe" or "next.js". Pick one guy.');
 }

@@ -1,32 +1,27 @@
-import React, {Component, PropTypes} from 'react';
-<% if (connect) %>import {connect} from 'react-redux';<% endif %>
-<% if (asyncConnect) %>import {asyncConnect} from 'redux-async-connect';<% endif %>
+import {Component} from 'react';
+<% if (isPage) %>import withRedux from 'next-redux-wrapper';<% endif %>
+<% if (isPage) %>import initStore from '../redux/lib/store';<% endif %>
 
-<% if (asyncConnect) %>@asyncConnect([{
-  deferred: true,
-  promise: ({store: {dispatch, getState}}) => {
-    if (!isLoaded(getState())) {
-      return dispatch(loadData());
-    }
-  }
-}])<% endif %>
-<% if (connect) %>@connect(
-  state => ({}),
-  {},
-)<% endif %>
-export default class {{name}} extends Component {
+<% if (isComponent) %>export default class {{name}} extends Component {<% endif %>
+<% if (isPage) %>class {{name}} extends Component {<% endif %>
 
-  static propTypes = {
-
+  static async getInitialProps ({store}) {
+    const {getState, dispatch} = store;
+    return {};
   }
 
   render() {
     const {} = this.props;
-    <% if (scss) %>const style = require('./{{name}}.scss');<% endif %>
     return (
-      <div <% if (scss) %>className={style.wrapper}<% endif %>>
+      <div>
+
+        <style jsx>{`
+
+        `}</style>
 
       </div>
     );
   }
 }
+
+<% if (isPage) %>export default withRedux(initStore)({{name}});<% endif %>
