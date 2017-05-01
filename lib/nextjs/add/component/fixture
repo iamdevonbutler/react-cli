@@ -22,9 +22,11 @@ export default class {{name}} extends Component {
 
   render() {
     const {} = this.props;
-    <% if (scss) %>const styles = require('./{{name}}.scss');<% endif %>
+    <% if (scss) %>const style = require('./{{name}}.scss');<% endif %>
     return (
-      <div></div>
+      <div <% if (scss) %>className={style.wrapper}<% endif %>>
+
+      </div>
     );
   }
 }

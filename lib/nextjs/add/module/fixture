@@ -3,7 +3,7 @@ const LOAD_SUCCESS = 'app/{{name}}/LOAD_SUCCESS';
 const LOAD_FAIL = 'app/{{name}}/LOAD_FAIL';
 
 const initialState = {
-  loaded: false
+  loaded: false,
 };
 
 export default function reducer(state = initialState, action = {}) {
@@ -11,21 +11,21 @@ export default function reducer(state = initialState, action = {}) {
     case LOAD:
       return {
         ...state,
-        loading: true
+        loading: true,
       };
     case LOAD_SUCCESS:
       return {
         ...state,
         loading: false,
         loaded: true,
-        user: action.result
+        data: action.result,
       };
     case LOAD_FAIL:
       return {
         ...state,
         loading: false,
         loaded: false,
-        error: action.error
+        error: action.error,
       };
     default:
       return state;

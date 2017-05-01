@@ -1,23 +1,37 @@
 #!/usr/bin/env node
 
-const {add, remove, rename, move} = require('./actions');
+const fs = require('fs');
+const path = require('path');
+const rruhe = require('./lib/rruhe');
+const nextjs = require('./lib/nextjs');
 
+// Load config file.
+var file, config;
+try {
+  file = fs.readFileSync('./rr-cli.config.js', {encoding: 'utf-8'});
+}
+catch (e) {
+  console.log('Config file not found. Add a "./rr-cli.config.js" file to your app\'s root directory');
+  return;
+}
+try {
+  config = JSON.parse(file);
+}
+catch (e) {
+  console.log('Config file is fucked homes.');
+  return;
+}
+
+// Delegate command to proper handlers.
+const {type} = config;
 const argv = process.argv.slice(2);
-const action = argv[0];
-
-switch (action) {
-  case 'add':
-    add(argv);
+switch (type) {
+  case 'rruhe':
+    rruhe(argv, config);
     break;
-  case 'remove':
-    remove(argv);
-    break;
-  case 'rename':
-    rename(argv);
-    break;
-  case 'move':
-    move(argv);
+  case 'next.js':
+    nextjs(argv, config);
     break;
   default:
-    console.log('Wrong command kid.');
+    console.log('Wrong type guy.');
 }
